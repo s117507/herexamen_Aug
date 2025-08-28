@@ -35,6 +35,7 @@ export async function getSpeciesById(id: number) {
 }
 
 export async function getAllMonkeys() {
+    /* const q = q = { nickname :{$regex: q $options: i} ""}*/
     return await monkeyCollection.find({}).toArray();
 }
 
@@ -58,7 +59,19 @@ export async function increaseMonkeyLikes(id: number) {
 }
 
 export async function login(username: string, pincode: string) {
-    return null;
+        if (username === "" || pincode === "") {
+        throw new Error("user and password required");
+    }
+    let user : User | null = await userCollection.findOne<User>({username: username});
+    if (user) {
+        if (await bcrypt.compare(pincode, user.password!)) {
+            return user;
+        } else {
+            throw new Error("Pincode incorrect");
+        }
+    } else {
+        throw new Error("User not found");
+    }
 }
 
 async function seedUsers() {

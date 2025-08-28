@@ -1,10 +1,11 @@
 import dotenv from "dotenv";
 dotenv.config();
-
 import session, { MemoryStore } from "express-session";
+import { User } from "./types";
 
 declare module 'express-session' {
     export interface SessionData {
+        user?: User
     }
 }
 
