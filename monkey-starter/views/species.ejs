@@ -1,13 +1,14 @@
 <%- include("partials/header") %>
 <%- include("partials/navbar") %>
 
-<h1 class="page-title">Species: Vervet Monkey</h1>
+<h1 class="page-title">Species: <%= species.name %></h1>
 
 <section class="detail-section full-width">
-    <p><strong>Habitat Type:</strong> Savannah</p>
-    <p><strong>Group Tolerance:</strong> 3°C to 10°C</p>
+    <p><strong>Habitat Type:</strong> <%= species.habitatType %></p>
+    <p><strong>Group Tolerance:</strong> <%= species.groupTolerance %></p>
     <p><strong>Diet:</strong> Fruits, Leaves, Seeds, Small animals</p>
-    <p><strong>EndangermentStatus: <div class="status status-LC">LC</div></strong>
+    <p><strong>EndangermentStatus: <div class="status status-<%= species.endangermentStatus %>"><%= species.endangermentStatus %></div></strong>
+    
 </section>
 
 <h2 class="section-title">Monkeys of this Species</h2>
@@ -30,55 +31,27 @@
         </tr>
     </thead>
     <tbody>
-        
+        <% for(let monkey of monkeys) { %>
         <tr>
-            <td><img src="https://raw.githubusercontent.com/similonap/json/refs/heads/master/monkeys/images/Mimi.png" width="100"></td>
-            <td>3</td>
-            <td>Mimi</td>
-            <td>Young vervet monkey with a mischievous streak.</td>
-
-            
-                <td><a href="/species/3">Vervet Monkey</a></td>
-            
-            <td>Kenya</td>
-            <td>Female</td>
-            <td>Playful</td>
-            <td>5.2 kg</td>
-            <td>50 cm</td>
-            <td>2021</td>
-            <td>4y </td>
+            <td><img src="<%= monkey.image %>" width="100"></td>
+            <td><%= monkey.id %></td>
+            <td><%= monkey.name %></td>
+            <td><%= monkey.description %></td>
+            <td><a href="/species/<monkey.species.id"><%= monkey.species.name %></a></td>
+            <td><%= monkey.country %></td>
+            <td><%= monkey.gender %></td>
+            <td><%= monkey.personality_trait %></td>
+            <td><%= monkey.weight %>kgs</td>
+            <td><%= monkey.height %>cm</td>
+            <td><%= monkey.year %></td>
+            <td><%= calculateMonkeyAge(monkey.year)%>y</td>
             <td>
-                <form method="post" action="/monkeys/3/like" class="like-form">
-                    <button type="submit">Like (0)</button>
-                </form>
-
+            <form method="post" action="/monkeys/<%= monkey.id %>/like" class="like-form">
+            <button type="submit">Like (<%= monkey.likes %>)</button>
+            </form>
             </td>
         </tr>
-        
-        <tr>
-            <td><img src="https://raw.githubusercontent.com/similonap/json/refs/heads/master/monkeys/images/Tika.png" width="100"></td>
-            <td>7</td>
-            <td>Tika</td>
-            <td>Tiny vervet with an obsession for shiny objects.</td>
-
-            
-                <td><a href="/species/3">Vervet Monkey</a></td>
-            
-            <td>Tanzania</td>
-            <td>Female</td>
-            <td>Sneaky</td>
-            <td>4.8 kg</td>
-            <td>48 cm</td>
-            <td>2020</td>
-            <td>5y </td>
-            <td>
-                <form method="post" action="/monkeys/7/like" class="like-form">
-                    <button type="submit">Like (58)</button>
-                </form>
-
-            </td>
-        </tr>
-        
+        <% } %>
     </tbody>
 </table>
 

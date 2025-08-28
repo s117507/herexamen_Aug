@@ -9,6 +9,7 @@ import session from "./session";
 import { homeRouter } from "./routers/homeRouter";
 import { speciesRouter } from "./routers/speciesRouter";
 
+
 dotenv.config();
 
 const app : Express = express();
@@ -21,7 +22,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(session);
 app.set("port", process.env.PORT ?? 3000);
 
-const SORT_FIELDS = ["id", "name", "description", "species_id", "country", "gender", "weight", "height", "year", "likes", "personality_trait"];
+
 
 app.use(authRouter());
 app.use("", homeRouter());
@@ -32,6 +33,7 @@ app.use("/species", speciesRouter());
 app.listen(app.get("port"), async() => {
     try {
         console.log("Server started on http://localhost:" + app.get("port"));
+        await connect();
     } catch (error) {
         console.error(error);
         process.exit(1);

@@ -1,4 +1,4 @@
-export function calculatePenguinAge(birthYear: number, currentYear: number = 2025): number {
+export function calculateMonkeyAge(birthYear: number, currentYear: number = 2025): number {
     if (!Number.isInteger(birthYear) || !Number.isInteger(currentYear)) {
         throw new Error('Both birthYear and currentYear must be integers.');
     }
