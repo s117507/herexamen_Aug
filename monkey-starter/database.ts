@@ -6,9 +6,9 @@ dotenv.config();
 
 export const client = new MongoClient(process.env.CONNECTION_STRING || "mongodb://localhost:27017");
 
-const userCollection : Collection<User> = client.db("herex").collection<User>("users");
-const monkeyCollection : Collection<Monkey> = client.db("herex").collection<Monkey>("monkeys");
-const speciesCollection : Collection<Species> = client.db("herex").collection<Species>("species");
+export const userCollection : Collection<User> = client.db("herex").collection<User>("users");
+export const monkeyCollection : Collection<Monkey> = client.db("herex").collection<Monkey>("monkeys");
+export const speciesCollection : Collection<Species> = client.db("herex").collection<Species>("species");
 
 export const SALT_ROUNDS = 10;
 
@@ -56,7 +56,7 @@ export async function login(username: string, pincode: string) {
 
 async function seedUsers() {
         const users : User[] = await getAllUsers();
-    if (users.length == 0) {
+    if (users.length === 0) {
         console.log("Database is empty, loading users from API")
         const response = await fetch("https://raw.githubusercontent.com/similonap/json/refs/heads/master/monkeys/users.json");
         const users : User[] = await response.json();
@@ -73,7 +73,16 @@ async function seedUsers() {
 }
 
 async function seedSpecies() {
-    
+    const species : Species[] = await getAllSpecies();
+    if (species.length === 0) {
+        console.log(`Database empty, getting species from API`)
+        const response = await fetch("https://raw.githubusercontent.com/similonap/json/refs/heads/master/monkeys/species.json")
+        const species : Species[] = await response.json();
+        await speciesCollection.insertMany(species);
+        console.log(`Added ${species} species.`)
+    } else {
+        console.log(`Found ${species} species.`)
+    }
 }
 
 async function seedMonkeys() {
