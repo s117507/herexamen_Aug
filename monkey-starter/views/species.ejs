@@ -5,7 +5,7 @@
 
 <section class="detail-section full-width">
     <p><strong>Habitat Type:</strong> <%= species.habitatType %></p>
-    <p><strong>Group Tolerance:</strong> <%= species.groupTolerance %></p>
+    <p><strong>Group Tolerance:</strong> <%= species.groupTolerance.minGroupSize %> - <%= species.groupTolerance.maxGroupSize %></p>
     <p><strong>Diet:</strong> Fruits, Leaves, Seeds, Small animals</p>
     <p><strong>EndangermentStatus: <div class="status status-<%= species.endangermentStatus %>"><%= species.endangermentStatus %></div></strong>
     
