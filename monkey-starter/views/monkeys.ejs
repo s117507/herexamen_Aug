@@ -1,0 +1,243 @@
+<%- include("partials/header") %>
+<%- include("partials/navbar") %>
+<%- include("partials/flash") %>
+
+<form method="get" action="">
+    <label for="search">Search:</label>
+    <input type="text" id="q" name="q" value="">
+    <button type="submit">Search</button>
+    <label for="sortField">Sort by:</label>
+    <select id="sortField" name="sortField">
+            <option value="id" selected>Id</option>
+            <option value="name" >Name</option>
+            <option value="description" >Description</option>
+            <option value="species_id" >Species_id</option>
+            <option value="country" >Country</option>
+            <option value="gender" >Gender</option>
+            <option value="weight" >Weight</option>   
+            <option value="height" >Height</option>    
+            <option value="year" >Year</option>   
+            <option value="likes" >Likes</option>    
+            <option value="personality_trait" >Personality_trait</option>
+    </select>
+    <label for="sortDirection">Sort direction:</label>
+    <select id="sortDirection" name="sortDirection">
+        <option value="asc" selected>Ascending</option>
+        <option value="desc" >Descending</option>
+    </select>
+    <button type="submit">Sort</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Species</th>
+            <th>Country</th>
+            <th>Gender</th>
+            <th>Personality Trait</th>
+            <th>Weight</th>
+            <th>Height</th>
+            <th>Year</th>
+            <th>Age</th>
+            <th>Likes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><img src="https://raw.githubusercontent.com/similonap/json/refs/heads/master/monkeys/images/Kiki.png" width="100"></td>
+            <td>1</td>
+            <td>Kiki</td>
+            <td>A playful capuchin monkey who loves solving puzzles.</td>
+            <td><a href="/species/2">Capuchin Monkey</a></td>
+            <td>Brazil</td>
+            <td>Female</td>
+            <td>Curious</td>
+            <td>3.5 kg</td>
+            <td>38 cm</td>
+            <td>2019</td>
+            <td>6y</td>
+            <td>
+                <form method="post" action="/monkeys/1/like" class="like-form">
+                    <button type="submit">Like (0)</button>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td><img src="https://raw.githubusercontent.com/similonap/json/refs/heads/master/monkeys/images/Bongo.png" width="100"></td>
+            <td>2</td>
+            <td>Bongo</td>
+            <td>Large, calm male gorilla always seeking attention.</td>
+            <td><a href="/species/1">Gorilla</a></td>
+            <td>Uganda</td>
+            <td>Male</td>
+            <td>Gentle</td>
+            <td>150 kg</td>
+            <td>170 cm</td>
+            <td>2015</td>
+            <td>10y</td>
+            <td>
+                <form method="post" action="/monkeys/2/like" class="like-form">
+                    <button type="submit">Like (0)</button>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td><img src="https://raw.githubusercontent.com/similonap/json/refs/heads/master/monkeys/images/Mimi.png" width="100"></td>
+            <td>3</td>
+            <td>Mimi</td>
+            <td>Young vervet monkey with a mischievous streak.</td>
+            <td><a href="/species/3">Vervet Monkey</a></td>
+            <td>Kenya</td>
+            <td>Female</td>
+            <td>Playful</td>
+            <td>5.2 kg</td>
+            <td>50 cm</td>
+            <td>2021</td>
+            <td>4y</td>
+            <td>
+                <form method="post" action="/monkeys/3/like" class="like-form">
+                    <button type="submit">Like (0)</button>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td><img src="https://raw.githubusercontent.com/similonap/json/refs/heads/master/monkeys/images/Paco.png" width="100"></td>
+            <td>4</td>
+            <td>Paco</td>
+            <td>Capuchin with an impressive memory for sequences.</td>
+            <td><a href="/species/2">Capuchin Monkey</a></td>
+            <td>Peru</td>
+            <td>Male</td>
+            <td>Intelligent</td>
+            <td>4.1 kg</td>
+            <td>41 cm</td>
+            <td>2017</td>
+            <td>8y</td>
+            <td>
+                <form method="post" action="/monkeys/4/like" class="like-form">
+                    <button type="submit">Like (300)</button>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td><img src="https://raw.githubusercontent.com/similonap/json/refs/heads/master/monkeys/images/Lila.png" width="100"></td>
+            <td>5</td>
+            <td>Lila</td>
+            <td>An empathetic gorilla known for comforting other monkeys.</td>
+            <td><a href="/species/1">Gorilla</a></td>
+            <td>Rwanda</td>
+            <td>Female</td>
+            <td>Caring</td>
+            <td>130 kg</td>
+            <td>163 cm</td>
+            <td>2012</td>
+            <td>13y</td>
+            <td>
+                <form method="post" action="/monkeys/5/like" class="like-form">
+                    <button type="submit">Like (100)</button>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td><img src="https://raw.githubusercontent.com/similonap/json/refs/heads/master/monkeys/images/Zazu.png" width="100"></td>
+            <td>6</td>
+            <td>Zazu</td>
+            <td>Energetic howler monkey who wakes up the whole forest at dawn.</td>
+            <td><a href="/species/4">Howler Monkey</a></td>
+            <td>Costa Rica</td>
+            <td>Male</td>
+            <td>Vocal</td>
+            <td>6.7 kg</td>
+            <td>55 cm</td>
+            <td>2018</td>
+            <td>7y</td>
+            <td>
+                <form method="post" action="/monkeys/6/like" class="like-form">
+                    <button type="submit">Like (22)</button>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td><img src="https://raw.githubusercontent.com/similonap/json/refs/heads/master/monkeys/images/Tika.png" width="100"></td>
+            <td>7</td>
+            <td>Tika</td>
+            <td>Tiny vervet with an obsession for shiny objects.</td>
+            <td><a href="/species/3">Vervet Monkey</a></td>
+            <td>Tanzania</td>
+            <td>Female</td>
+            <td>Sneaky</td>
+            <td>4.8 kg</td>
+            <td>48 cm</td>
+            <td>2020</td>
+            <td>5y</td>
+            <td>
+                <form method="post" action="/monkeys/7/like" class="like-form">
+                    <button type="submit">Like (58)</button>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td><img src="https://raw.githubusercontent.com/similonap/json/refs/heads/master/monkeys/images/Rolo.png" width="100"></td>
+            <td>8</td>
+            <td>Rolo</td>
+            <td>Capuchin who loves to mimic human gestures.</td>
+            <td><a href="/species/2">Capuchin Monkey</a></td>
+            <td>Colombia</td>
+            <td>Male</td>
+            <td>Mimic</td>
+            <td>3.9 kg</td>
+            <td>39 cm</td>
+            <td>2016</td>
+            <td>9y</td>
+            <td>
+                <form method="post" action="/monkeys/8/like" class="like-form">
+                    <button type="submit">Like (145)</button>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td><img src="https://raw.githubusercontent.com/similonap/json/refs/heads/master/monkeys/images/Nala.png" width="100"></td>
+            <td>9</td>
+            <td>Nala</td>
+            <td>Graceful gorilla with a strong sense of leadership.</td>
+            <td><a href="/species/1">Gorilla</a></td>
+            <td>Democratic Republic of Congo</td>
+            <td>Female</td>
+            <td>Leader</td>
+            <td>140 kg</td>
+            <td>165 cm</td>
+            <td>2013</td>
+            <td>12y</td>
+            <td>
+                <form method="post" action="/monkeys/9/like" class="like-form">
+                    <button type="submit">Like (210)</button>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td><img src="https://raw.githubusercontent.com/similonap/json/refs/heads/master/monkeys/images/Mojo.png" width="100"></td>
+            <td>10</td>
+            <td>Mojo</td>
+            <td>Young howler monkey always looking for adventure.</td>
+            <td><a href="/species/4">Howler Monkey</a></td>
+            <td>Panama</td>
+            <td>Male</td>
+            <td>Adventurous</td>
+            <td>5.5 kg</td>
+            <td>52 cm</td>
+            <td>2022</td>
+            <td>3y</td>
+            <td>
+                <form method="post" action="/monkeys/10/like" class="like-form">
+                    <button type="submit">Like (8)</button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<%- include("partials/footer") %>
