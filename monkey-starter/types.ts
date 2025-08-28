@@ -44,7 +44,7 @@ export interface User {
     id: number;
     username: string;
     fullname: string;
-    password?: string;
+    password: string;
     avatar: string;
 }
 
